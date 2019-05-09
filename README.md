@@ -83,7 +83,7 @@ t2t-trainer \
 * Currently, the base model reached almost 500K, while the specAugment model is still being trained.
 * Augmentation seems to do harm on training loss. It is understandable and expected.
 
-### Word Error Rate (SpecAugment (left) vs. No augmentation (right))
+### Word Error Rate (SpecAugment (top) vs. No augmentation (bottom))
 
 <img src="spec_WER.png">
 <img src="no_WER.png">
