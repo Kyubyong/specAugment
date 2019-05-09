@@ -14,6 +14,10 @@ Implementation of [SpecAugment: A Simple Data Augmentation Method for Automatic 
 * With 4 GPUs, training (for 500K) seems to take more than a week.
 * To compare the effect of specAugment, I also run a vanilla model.
 
+## Requirements
+* TensorFlow==1.12.0
+* tensor2tensor==1.12.0
+
 ## Script
 ```
 echo "No specAugment"
@@ -89,4 +93,4 @@ t2t-trainer \
 <img src="no_WER.png">
 
 * The base model looks messy. The WER hangs around 26%, which is bad.
-* The specAugment model looks better, and it is likely to keep improving. However, I don't think the WER will go down to 10%. 
+* The specAugment model looks better, and it is likely to keep improving. I don't think the WER will go down to 10%, though.
