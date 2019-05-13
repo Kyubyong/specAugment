@@ -10,9 +10,11 @@ Implementation of [SpecAugment: A Simple Data Augmentation Method for Automatic 
 * Details are clearly explained in the paper.
 * While the first one, time warping, looks salient apparently, [Daniel](danielspark@google.com), the first author, told me that indeed the other two are much more important than time warping, so it can be ignored if necessary. (Thanks for the advice, Daniel!)
 * I found that implementing time warping with TensorFlow is tricky because the relevant functions are based on the static shape of the melspectrogram tensor, which is hard to get from the pre-defined graph.
-* Reserving it for a future task, I test frequency / time masking on [Tensor2tensor](https://github.com/tensorflow/tensor2tensor)'s LibriSpeech Clean Small Task rather than the full set.
+* I test frequency / time masking on [Tensor2tensor](https://github.com/tensorflow/tensor2tensor)'s LibriSpeech Clean Small Task.
+* The paper used the LAS model, but I stick to Transformer.
+* To compare the effect of specAugment, I also run a base model, which is without augmentation.
 * With 4 GPUs, training (for 500K) seems to take more than a week.
-* To compare the effect of specAugment, I also run a vanilla model.
+
 
 ## Requirements
 * TensorFlow==1.12.0
@@ -84,8 +86,7 @@ t2t-trainer \
 ### Training loss
 <img src="loss.png">
 
-* Currently, the base model reached almost 500K, while the specAugment model is still being trained.
-* Augmentation seems to do harm on training loss. It is understandable and expected.
+* Apparently augmentation seems to do harm on training loss. It is understandable and expected.
 
 ### Word Error Rate (SpecAugment (top) vs. No augmentation (bottom))
 
@@ -93,4 +94,4 @@ t2t-trainer \
 <img src="no_WER.png">
 
 * The base model looks messy. The WER hangs around 26%, which is bad.
-* The specAugment model looks better, and it is likely to keep improving. I don't think the WER will go down to 10%, though.
+* The specAugment model looks much neater. The WER got 20% after 500k of training. I don't think it is good enough, though.
