@@ -94,4 +94,4 @@ t2t-trainer \
 <img src="no_WER.png">
 
 * The base model looks messy. The WER hangs around 26%, which is bad.
-* The specAugment model looks much neater. The WER got 20% after 500k of training. I don't think it is good enough, though.
+* The specAugment model looks much neater. The WER reached 20% after 500k of training. I don't think it is good enough, though.
